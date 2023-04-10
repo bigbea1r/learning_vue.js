@@ -14,8 +14,12 @@
         </h2>
         <h2 v-on:mousemove="handleMouseMove">
             X: {{ x }} \ Y: {{ y }}
+            <span v-on:mousemove.stop="">Не изменять</span>
         </h2>
-        <span>Не изменять</span>
+
+        <hr>
+
+        <input type="text" v-on:keyup.enter.space="alertValue">
 
     </div>
 
@@ -31,9 +35,13 @@
                 handleMouseMove: function (event) {
                     this.x = event.clientX
                     this.y = event.clientY
-                }                
+                },
+                alertValue: function(event) {
+                    alert(event.target.value)
+                }     
             }
         })
     </script>
 </body>
 </html>
+<!--vue.js-Key Modifiers-->
