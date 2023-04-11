@@ -28,12 +28,18 @@
         v-bind:class = :class
         -->
     <div id="app">
-        <h1 v-show="isVisible">I am visible</h1>
-        <h2 v-show="!isVisible">You can't see me!</h2>
+        <ul>
+            <li v-for="(persone, index) of people">{{ index + 1}}. {{ persone.name }} - <b> {{ persone.age }} </b> </li>
+        </ul>
 
         <hr>
-
-        <button @click="isVisible = !isVisible">Toggle</button>
+        <ol>
+            <li v-for="num of 4"> {{ num }} </li>
+        </ol>
+        <hr>
+        <ul>
+            <li v-for="(value, key, index) in persone"><em> {{index + 1}} </em><b> {{ key }} </b> {{ value }} </li>
+        </ul>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
@@ -41,7 +47,18 @@
         new Vue({
             el: '#app',
             data: {
-             isVisible: false
+             people: [
+                {name:'Влад', age: 20},
+                {name:'Макс', age: 29},
+                {name:'Катя', age: 22},
+                {name:'Елена', age: 28},
+                {name:'Володя', age: 25},
+             ],
+             persone:{
+                name: 'Max',
+                age: 50,
+                job: 'Frontend'
+             }
             }
         })
     </script>
