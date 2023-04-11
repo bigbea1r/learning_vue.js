@@ -9,15 +9,11 @@
 <body>
     
     <div id="app">
-        <h2>
-            <a :href="url">Лучший браузер для разрабов(Maybe)</a>
-        </h2>
-        <h2>
-            Counter: {{ counter}}
-        </h2>
+        <!-- @-это v-on-->
+        <input type="text" v-model.lazy="inputValue">
+        <hr>
 
-        <button @click="counter++">Rise</button>
-
+        <h2>{{ inputValue }}</h2>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
@@ -25,20 +21,9 @@
         new Vue({
             el: '#app',
             data: {
-                url: 'http://google.com',
-                counter:0
-            },
-            methods:{
-                handleMouseMove: function (event) {
-                    this.x = event.clientX
-                    this.y = event.clientY
-                },
-                alertValue: function(event) {
-                    alert(event.target.value)
-                }     
+             inputValue:'Заполни бланк: '
             }
         })
     </script>
 </body>
 </html>
-<!--vue.js-Key Modifiers-->
