@@ -28,14 +28,12 @@
         v-bind:class = :class
         -->
     <div id="app">
-        <template v-if="isVisible">
-            <h2>I am title</h2>
-            <p>hgytfrdtxgchfvjbknhugtfyrdtfuyghkjok higoyuftysfyghjios</p>
-        </template>
-        <template v-else>
-            <h2 style="color:red">I am title</h2>
-            <p style="color:blue">hgytfrdtxgchfvjbknhugtfyrdtfuyghkjok higoyuftysfyghjios</p>
-        </template>
+        <h1 v-show="isVisible">I am visible</h1>
+        <h2 v-show="!isVisible">You can't see me!</h2>
+
+        <hr>
+
+        <button @click="isVisible = !isVisible">Toggle</button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
