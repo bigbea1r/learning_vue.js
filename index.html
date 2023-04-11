@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="programmer.svg">
     <title>Test Vue.js</title>
     <style>
         .circle {
@@ -27,13 +28,14 @@
         v-bind:class = :class
         -->
     <div id="app">
-
-        <div class="circle" :style="circleClasses"></div>
-
-        <div class="circle" :style="[circleClasses, {'width':height + 'px'}]"></div>
-        <hr>
-        <input type="text" v-model="color">
-        <input type="text" v-model="height">
+        <template v-if="isVisible">
+            <h2>I am title</h2>
+            <p>hgytfrdtxgchfvjbknhugtfyrdtfuyghkjok higoyuftysfyghjios</p>
+        </template>
+        <template v-else>
+            <h2 style="color:red">I am title</h2>
+            <p style="color:blue">hgytfrdtxgchfvjbknhugtfyrdtfuyghkjok higoyuftysfyghjios</p>
+        </template>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
@@ -41,16 +43,7 @@
         new Vue({
             el: '#app',
             data: {
-             color: 'blue',
-             height:'100'
-            },
-            computed: {
-                circleClasses: function(){
-                    return {
-                        'background': this.color,
-                        'height': this.height + 'px'
-                    }
-                }
+             isVisible: false
             }
         })
     </script>
