@@ -5,17 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Vue.js</title>
+    <style>
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 1px solid black;
+            display: inline-block;
+            margin: 40px;
+        }
+
+        .red{background: red;}
+        .blue{background: blue;}
+        .green{background: green;}
+    </style>
 </head>
 <body>
-    
-    <div id="app">
-        <!-- 
+    <!-- 
         @-это v-on
-        lazy - выполнит действие, если уйдёт фокус с inpet'a-->
-        <input type="text" v-model.lazy="inputValue">
-        <hr>
+        lazy - выполнит действие, если уйдёт фокус с inpet'a
+        v-bind:class = :class
+        -->
+    <div id="app">
 
-        <h2>{{ inputValue }}</h2>
+        <div 
+
+            class="circle" 
+            @click="isActive = !isActive"
+            :class="getCssClasses"
+        ></div>
+
+        <div class="circle" :class="[color, {'red': isActive}]"></div>
+
+        <input type="text" v-model="color">
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
@@ -23,7 +45,16 @@
         new Vue({
             el: '#app',
             data: {
-             inputValue:'Заполни бланк: '
+             isActive: false,
+             color: 'blue'
+            },
+            computed: {
+                getCssClasses:function() {
+                    return {
+                        'red':this.isActive,
+                        'green': !this.isActive
+                    }
+                }
             }
         })
     </script>
