@@ -14,34 +14,22 @@
         v-bind:class = :class
         -->
     <div id="app">
-       <h2> {{ title }} </h2>
-       <button @click="title = 'Update title'">Update title</button>
+       <h2 ref="heading"> {{ title }} </h2>
+       <button @click="updateFirstTitle">Update title</button>
+       <hr ref="horLine">
     </div>
-    <hr>
-
-    <div id="app2">
-        <h2> {{ title }} </h2>
-        <button @click="updateFirstTitle">Update first title</button>
-     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
     <script>
-        var vue1 = new Vue({
+        new Vue({
             el: '#app',
             data: {
                 title: 'Hello I am Vue!'
-            }
-        })
-
-        console.log(vue1)
-        new Vue({
-            el: '#app2',
-            data: {
-                title: 'Hello from vue 2'
             },
-            methods:{
-                    updateFirstTitle: function(){
-                        vue1.title = 'Updated from second app'
+            methods: {
+                updateFirstTitle() {
+                    this.title = 'New title!'
+                    console.log(this.$refs.heading)
+                    console.log(this.$refs.horLine)
                 }
             }
         })
