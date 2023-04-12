@@ -13,26 +13,16 @@
         lazy - выполнит действие, если уйдёт фокус с input'a
         v-bind:class = :class
         -->
-    <div id="app">
-       <h2 ref="heading"> {{ title }} </h2>
-       <button @click="updateFirstTitle">Update title</button>
-       <hr ref="horLine">
-    </div>
+    <div id="app"></div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
     <script>
-        new Vue({
-            el: '#app',
+        var vue = new Vue({
             data: {
-                title: 'Hello I am Vue!'
+                title: 'Hello I am Vue! 2'
             },
-            methods: {
-                updateFirstTitle() {
-                    this.title = 'New title!'
-                    console.log(this.$refs.heading)
-                    console.log(this.$refs.horLine)
-                }
-            }
-        })
+            template: '<div><h1>{{ title }}</h1><p> Hello p</p></div>'
+        });
+        vue.$mount('#app')
     </script>
 </body>
 </html>
